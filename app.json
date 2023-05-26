@@ -1,5 +1,8 @@
 {
   "expo": {
+    "name": "Expo Video Background",
+    "description": "example of video playing on a loop in the background",
+    "slug": "expo-video-background",
     "sdkVersion": "32.0.0",
     "version": "1.0.0",
     "orientation": "portrait",
