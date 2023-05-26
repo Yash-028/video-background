@@ -1,11 +1,13 @@
-import React from 'react';
-import { Animated, Dimensions, StyleSheet, Text, View } from 'react-native';
-import { AppLoading, Asset, Video } from 'expo';
+import React from "react";
+import { Animated, Dimensions, StyleSheet, Text, View } from "react-native";
+import { AppLoading, Asset, Video } from "expo";
 
 // set path to local video
-const videoSource = require('./assets/video/lights.mp4');
+const videoSource = require("");
 
-const { height, width } = Dimensions.get('window');
+// Video path update the path
+
+const { height, width } = Dimensions.get("window");
 
 export default class App extends React.Component {
   constructor(props) {
@@ -16,7 +18,7 @@ export default class App extends React.Component {
       backgroundOpacity: new Animated.Value(0),
       loaded: false,
       videoHeight: height,
-      videoWidth: width
+      videoWidth: width,
     };
   }
 
@@ -32,7 +34,7 @@ export default class App extends React.Component {
       // animate spring
       // https://facebook.github.io/react-native/docs/animated#spring
       Animated.spring(backgroundOpacity, {
-        toValue: 1
+        toValue: 1,
       }).start();
     }, 400);
   };
@@ -42,12 +44,14 @@ export default class App extends React.Component {
 
     // if application is not yet loaded
     if (!loaded) {
-      return <AppLoading 
-        startAsync={this._cacheVideoAsync}
-        // once loaded, update state
-        onFinish={() => this.setState({ loaded: true })}
-        onError={console.warn}
-      />;
+      return (
+        <AppLoading
+          startAsync={this._cacheVideoAsync}
+          // once loaded, update state
+          onFinish={() => this.setState({ loaded: true })}
+          onError={console.warn}
+        />
+      );
     }
 
     return (
@@ -56,7 +60,7 @@ export default class App extends React.Component {
           <Animated.View
             style={[
               styles.backgroundViewWrapper,
-              { opacity: backgroundOpacity }
+              { opacity: backgroundOpacity },
             ]}
           >
             <Video
@@ -83,27 +87,27 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    backgroundColor: 'transparent',
+    alignItems: "center",
+    backgroundColor: "transparent",
     flex: 1,
-    justifyContent: 'center'
+    justifyContent: "center",
   },
   background: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: '#000'
+    backgroundColor: "#000",
   },
   backgroundViewWrapper: {
-    ...StyleSheet.absoluteFillObject
+    ...StyleSheet.absoluteFillObject,
   },
   overlay: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(0,0,0,0.4)'
+    backgroundColor: "rgba(0,0,0,0.4)",
   },
   title: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 20,
     marginTop: 90,
     paddingHorizontal: 20,
-    textAlign: 'center'
-  }
+    textAlign: "center",
+  },
 });
